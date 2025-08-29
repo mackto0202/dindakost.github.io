@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Form Booking Kost</h2>
+
+<form method="POST" action="/booking">
+  <div class="mb-3">
+    <label for="kost_id" class="form-label">Pilih Kost</label>
+    <select class="form-select" name="kost_id" id="kost_id" required>
+      <option value="" disabled selected>-- Pilih Kost --</option>
+      {% for kost in kosts %}
+      <option value="{{ kost[0] }}">{{ kost[1] }} - Rp {{ kost[4] }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="tanggal" class="form-label">Tanggal Booking</label>
+    <input type="date" class="form-control" name="tanggal" id="tanggal" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Lanjutkan</button>
+</form>
+{% endblock %}
